@@ -14,13 +14,16 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Table(name = "rol")
+@NamedQueries({
+        @NamedQuery(name = "Rol.findByDescripcion", query = "SELECT p FROM Rol p where p.descripcion = :descripcion")
+})
 public class Rol {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "estado", nullable = false)
     private Boolean estado;
-    @Column(name = "descripcion", nullable = false)
+    @Column(name = "descripcion",unique = true, nullable = false)
     private String descripcion;
     @ManyToMany(mappedBy = "roles")
     private Set<Usuario> usuarios;
