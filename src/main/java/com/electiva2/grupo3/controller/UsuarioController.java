@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/usuario")
+@RequestMapping("users")
 
 public class UsuarioController {
     private final UsuarioService usuarioService;
@@ -49,7 +49,7 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PostMapping("/crear")
+    @PostMapping
     public ResponseEntity<Usuario> createUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         try {
             Usuario usuario = usuarioMapper.convertToEntity(usuarioDTO);

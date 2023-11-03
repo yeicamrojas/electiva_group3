@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/persona")
+@RequestMapping("persons")
 @RequiredArgsConstructor
 public class PersonaController {
     private final PersonaService personaService;
@@ -35,7 +35,7 @@ public class PersonaController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PostMapping("/crear")
+    @PostMapping
     public ResponseEntity<Persona> createPersona(@RequestBody Persona persona) {
         try {
             Persona personaNew = personaService.createPersona(persona);
@@ -44,7 +44,7 @@ public class PersonaController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> eliminarUsuario(@PathVariable Long id) {
         try {
             personaService.personaDelete(id);
